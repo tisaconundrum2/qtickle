@@ -1,2 +1,12 @@
 # Ignore Pycharm
 .idea
+
+# Ignore distributions
+build
+dist
+
+# Ignore egg
+*.egg*
+
+# Ignore compiled python
+*.pyc
