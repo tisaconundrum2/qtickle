@@ -1,12 +1,10 @@
 from setuptools import setup, find_packages
 
-from Qtickle import __version__
-
 if __name__ == '__main__':
     setup(
         zip_safe=False,
         name='Qtickle',
-        version=__version__,
+        version="1.5",
         author='Nicholas Finch',
         author_email='tisaconundrum2@github.com',
         packages=find_packages(),
