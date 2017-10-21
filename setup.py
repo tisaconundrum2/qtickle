@@ -4,7 +4,7 @@ if __name__ == '__main__':
     setup(
         zip_safe=False,
         name='Qtickle',
-        version="1.5",
+        version="1.5.3",
         author='Nicholas Finch',
         author_email='tisaconundrum2@github.com',
         packages=find_packages(),
@@ -14,5 +14,6 @@ if __name__ == '__main__':
         It works by inspecting for object names and then collecting their
         values.
         """,
+        long_description=open('README.rst').read(),
 
     )
