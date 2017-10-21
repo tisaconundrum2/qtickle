@@ -8,7 +8,7 @@ if __name__ == '__main__':
         name='Qtickle',
         version=__version__,
         author='Nicholas Finch',
-        author_email='tisaconundrum@github',
+        author_email='tisaconundrum2@github.com',
         packages=find_packages(),
         url='https://github.com/tisaconundrum2/qtickle',
         description="""
