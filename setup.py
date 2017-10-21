@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-from qtickle import __version__
+from Qtickle import __version__
 
 if __name__ == '__main__':
     setup(
@@ -10,7 +10,7 @@ if __name__ == '__main__':
         author='Nicholas Finch',
         author_email='tisaconundrum2@github.com',
         packages=find_packages(),
-        url='https://github.com/tisaconundrum2/qtickle',
+        url='https://github.com/tisaconundrum2/Qtickle',
         description="""
         A script designed to aid in saving values inside Qt objects.
         It works by inspecting for object names and then collecting their
