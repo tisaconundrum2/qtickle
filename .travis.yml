@@ -17,4 +17,6 @@ deploy:
     branch: master
 after_deploy:
 - pip install Qtickle
+- conda config --set always_yes yes --set changeps1 no
+- conda install pyqt
 - python test/test.py
