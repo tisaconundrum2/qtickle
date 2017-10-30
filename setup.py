@@ -4,7 +4,7 @@ if __name__ == '__main__':
     setup(
         zip_safe=False,
         name='Qtickle',
-        version="1.5.6",
+        version="1.5.8",
         author='Nicholas Finch',
         author_email='tisaconundrum2@github.com',
         packages=find_packages(),
