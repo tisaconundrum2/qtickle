@@ -36,6 +36,7 @@ class Qtickle(object):
                     value = obj.text()
                     dict[name] = value
 
+
                 if isinstance(obj, QCheckBox):
                     name = obj.objectName()
                     state = obj.isChecked()
@@ -92,15 +93,11 @@ class Qtickle(object):
             print(e)
 
     def guiRestore(self, dict):
-        """
-
-        :param dict:
-        :return: null
-        """
         # Restore geometry
         # self.core.resize(self.settings.value('size', QtCore.QSize(500, 500)))
         # self.core.move(self.settings.value('pos', QtCore.QPoint(60, 60)))
         for name, obj in inspect.getmembers(self.ui):
+            pass
             try:
                 if isinstance(obj, QLineEdit):
                     name = obj.objectName()
@@ -165,16 +162,19 @@ class Qtickle(object):
                 if isinstance(obj, QListWidget):
                     name = obj.objectName()
                     values = dict[name + "_values"]
+                    index = dict[name + "_index"]
                     obj.clear()
                     if values is not None:
                         for value in values:
                             list_item = QListWidgetItem(value)
                             obj.addItem(list_item)
-                    index = dict[name + "_index"]
-                    try:
-                        obj.setCurrentItem(obj.findItems(index[0], QtCore.Qt.MatchExactly)[0])
-                    except:
-                        pass
+                            try:
+                                for i in index:
+                                    matching_items=obj.findItems(i, QtCore.Qt.MatchExactly)
+                                    for item in matching_items:
+                                        obj.setCurrentItem(item)
+                            except:
+                                pass
 
             except Exception as e:
                 print(e)
