@@ -208,3 +208,66 @@ class Qtickle(object):
 
         except Exception as e:
             print(e)
+
+    def selectiveGuiRestore(self, dict):
+        for name, obj in inspect.getmembers(self.ui):
+            pass
+            try:
+                if isinstance(obj, QCheckBox):
+                    name = obj.objectName()
+                    value = dict[name]
+                    if value is not None:
+                        try:
+                            obj.setChecked(strtobool(value))  # restore checkbox
+                        except:
+                            obj.setChecked(value)
+
+                if isinstance(obj, QRadioButton):
+                    name = obj.objectName()
+                    value = dict[name]
+                    if value is not None:
+                        obj.setChecked(strtobool(value))
+
+                if isinstance(obj, QSlider):
+                    name = obj.objectName()
+                    value = dict[name]
+                    if value is not None:
+                        obj.setValue(int(value))  # restore value from registry
+
+                if isinstance(obj, QSpinBox):
+                    name = obj.objectName()
+                    value = dict[name]
+                    if value is not None:
+                        obj.setValue(int(value))  # restore value from registry
+
+                if isinstance(obj, QDoubleSpinBox):
+                    name = obj.objectName()
+                    value = dict[name]
+                    if value is not None:
+                        obj.setValue(float(value))
+
+                if isinstance(obj, QComboBox):
+                    name = obj.objectName()
+                    # select the item in question by setting it's index
+                    index = dict[name + "_index"]
+                    obj.setCurrentIndex(int(index))
+
+                if isinstance(obj, QListWidget):
+                    name = obj.objectName()
+                    values = dict[name + "_values"]
+                    index = dict[name + "_index"]
+                    obj.clear()
+                    if values is not None:
+                        for value in values:
+                            list_item = QListWidgetItem(value)
+                            obj.addItem(list_item)
+                            try:
+                                for i in index:
+                                    matching_items = obj.findItems(i, QtCore.Qt.MatchExactly)
+                                    for item in matching_items:
+                                        obj.setCurrentItem(item)
+                            except:
+                                pass
+
+            except Exception as e:
+                print(e)
